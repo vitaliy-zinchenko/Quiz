@@ -1,9 +1,8 @@
 package zinchenko.engl.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="tag")
@@ -11,6 +10,8 @@ public class Tag {
 
     @Id
     @Column(name = "tag_id")
+    @GeneratedValue(generator = "seq_gen", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_gen", sequenceName = "tag_seq")
     private Long id;
 
     @Column(name="name")

@@ -1,72 +1,71 @@
 var app = angular.module('app', ['ngRoute',
     'controllers', 'adminkaControllers', 'service']);
 
-app.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider
-            /**
-             * ~~~~~ QUIZ ~~~~~
-             */
-            .when('/list', {
-                templateUrl: 'app/js/quiz/controllers/list.html',
-                controller: 'ListCtrl'
-            })
-            .when('/test/:testId', {
-                templateUrl: 'app/js/quiz/controllers/test.html',
-                controller: 'TestCtrl'
-            })
-            .when('/category/:categoryId', {
-                templateUrl: 'app/js/quiz/controllers/list.html',
-                controller: 'CategoryCtrl'
-            })
-            .when('/create/category', {
-                templateUrl: 'app/js/quiz/controllers/createCategory.html',
-                controller: 'CreateCategoryCtrl'
-            })
-            .when('/category/:categoryId/update', {
-                templateUrl: 'app/js/quiz/controllers/createCategory.html',
-                controller: 'CreateCategoryCtrl'
-            })
-            .when('/create/category/:categoryId', {
-                templateUrl: 'app/js/quiz/controllers/createCategory.html',
-                controller: 'CreateCategoryCtrl'
-            })
-            .when('/createTest/:categoryId', {
-                templateUrl: 'app/js/quiz/controllers/createTest.html',
-                controller: 'CreateTestCtrl'
-            })
-            .when('/test/:testId/update', {
-                templateUrl: 'app/js/quiz/controllers/createTest.html',
-                controller: 'UpdateTestCtrl'
-            })
-        /**
-         * ~~~~~ ADMINKA ~~~~~
-         */
-            .when('/adminka', {
-                templateUrl: '/app/js/adminka/controllers/main.html',
-                controller: 'AdminkaMainCtrl'
-            })
-            .when('/adminka/images', {
-                templateUrl: '/app/js/adminka/controllers/images.html',
-                controller: 'AdminkaImagesCtrl'
-            })
-            .when('/adminka/users', {
-                templateUrl: '/app/js/adminka/controllers/users.html',
-                controller: 'AdminkaUsersCtrl'
-            })
-            .when('/adminka/tags', {
-                templateUrl: '/app/js/adminka/controllers/tags.html',
-                controller: 'AdminkaTagsCtrl'
-            })
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+    /**
+     * ~~~~~ QUIZ ~~~~~
+     */
+        .when('/list', {
+            templateUrl: 'app/js/quiz/controllers/list.html',
+            controller: 'ListCtrl'
+        })
+        .when('/test/:testId', {
+            templateUrl: 'app/js/quiz/controllers/test.html',
+            controller: 'TestCtrl'
+        })
+        .when('/category/:categoryId', {
+            templateUrl: 'app/js/quiz/controllers/list.html',
+            controller: 'CategoryCtrl'
+        })
+        .when('/create/category', {
+            templateUrl: 'app/js/quiz/controllers/createCategory.html',
+            controller: 'CreateCategoryCtrl'
+        })
+        .when('/category/:categoryId/update', {
+            templateUrl: 'app/js/quiz/controllers/createCategory.html',
+            controller: 'CreateCategoryCtrl'
+        })
+        .when('/create/category/:categoryId', {
+            templateUrl: 'app/js/quiz/controllers/createCategory.html',
+            controller: 'CreateCategoryCtrl'
+        })
+        .when('/createTest/:categoryId', {
+            templateUrl: 'app/js/quiz/controllers/createTest.html',
+            controller: 'CreateTestCtrl'
+        })
+        .when('/test/:testId/update', {
+            templateUrl: 'app/js/quiz/controllers/createTest.html',
+            controller: 'UpdateTestCtrl'
+        })
+    /**
+     * ~~~~~ ADMINKA ~~~~~
+     */
+        .when('/adminka', {
+            templateUrl: '/app/js/adminka/controllers/main.html',
+            controller: 'AdminkaMainCtrl'
+        })
+        .when('/adminka/images', {
+            templateUrl: '/app/js/adminka/controllers/images.html',
+            controller: 'AdminkaImagesCtrl'
+        })
+        .when('/adminka/users', {
+            templateUrl: '/app/js/adminka/controllers/users.html',
+            controller: 'AdminkaUsersCtrl'
+        })
+        .when('/adminka/tags', {
+            templateUrl: '/app/js/adminka/controllers/tags.html',
+            controller: 'AdminkaTagsCtrl'
+        })
 
-        /**
-         *  OTHER
-         */
-            .otherwise({
-                redirectTo: '/list'
-            });
+    /**
+     *  OTHER
+     */
+        .otherwise({
+            redirectTo: '/list'
+        });
 
-    }]);
+}]);
 
 app.run(function ($rootScope, Config) {
     //TODO !!!!!!!!!!!!!!!!!!

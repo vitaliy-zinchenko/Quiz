@@ -9,8 +9,10 @@ public interface TagDao {
 
     List<Tag> findAll();
 
-    Long create(Tag tag);
+    Tag create(Tag tag);
 
     void remove(Tag tag);
+
+    Tag update(Tag tag);
 
 }

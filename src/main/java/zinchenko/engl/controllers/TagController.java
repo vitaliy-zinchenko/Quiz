@@ -34,8 +34,14 @@ public class TagController {
 
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
-    public void save(@RequestBody Tag tag){
-        tagDao.remove(tag);
+    public @ResponseBody Tag create(@RequestBody Tag tag){
+        return tagDao.create(tag);
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.PUT)
+    public @ResponseBody Tag update(@RequestBody Tag tag){
+        return tagDao.update(tag);
     }
 
     public TagDao getTagDao() {

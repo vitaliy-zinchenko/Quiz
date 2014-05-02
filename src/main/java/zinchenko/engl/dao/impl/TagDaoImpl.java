@@ -22,14 +22,20 @@ public class TagDaoImpl implements TagDao{
     }
 
     @Override
-    public Long create(Tag tag) {
-        return (Long) sessionFactory.getCurrentSession()
-                .save(tag);
+    public Tag create(Tag tag) {
+        sessionFactory.getCurrentSession().save(tag);
+        return tag;
     }
 
     @Override
     public void remove(Tag tag) {
         sessionFactory.getCurrentSession().delete(tag);
+    }
+
+    @Override
+    public Tag update(Tag tag) {
+        sessionFactory.getCurrentSession().update(tag);
+        return tag;
     }
 
     public SessionFactory getSessionFactory() {

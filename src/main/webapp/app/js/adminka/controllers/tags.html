@@ -11,31 +11,38 @@
         <q-modal-wind is-show="tagToRemove" title="Are you sure?" ok-click="removeTag(tagToRemove)">
             Are you sure you want to remove tag <b>{{tagToRemove.name}}?</b>
         </q-modal-wind>
-        <input ng-model="mmm">
-        <q-modal-wind is-show="isAddTag" ok-click="addTag($parent.tag)">
-            -{{mmm}}-
-            <input>
-            <button ng-click="addTag(tag)">bbb</button>
-            <form name="form">
+        <form name="form">
+            <q-modal-wind is-show="tagToEdit" ok-click="save(tagToEdit)" ok-show="form.$dirty && form.$valid">
                 <div class="form-group">
                     <label for="name">
                         <span class="required">* </span>
                         Name:
                     </label>
-                    <input id="name" type="text" ng-model="$parent.tag.name"
+                    <input id="name" type="text" ng-model="$parent.tagToEdit.name"
                            class="form-control" name="name" rows="3" required/>
                 </div>
-                <input ng-model="myVal"> |{{myVal}}|
-                <!--<div ng-show="form.name.$dirty && form.name.$invalid">-->
-                    <!--<div class="alert alert-danger" ng-show="form.name.$error.required">-->
-                        <!--Name is required.-->
-                    <!--</div>-->
-                <!--</div>-->
-            </form>
-        </q-modal-wind>
-        {{myVal}}
+                <div ng-show="form.name.$dirty && form.name.$invalid">
+                    <div class="alert alert-danger" ng-show="form.name.$error.required">
+                        Name is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="color">
+                        <span class="required">* </span>
+                        Color:
+                    </label>
+                    <input id="color" type="color" ng-model="$parent.tagToEdit.color"
+                           class="form-control" name="color" required/>
+                </div>
+                <div ng-show="form.color.$dirty && form.color.$invalid">
+                    <div class="alert alert-danger" ng-show="form.color.$error.required">
+                        Name is required.
+                    </div>
+                </div>
+            </q-modal-wind>
+        </form>
         <div class="panel-group">
-            <button class="btn btn-success" ng-click="isAddTag = true">Add tag</button>
+            <button class="btn btn-success" ng-click="tagToEdit = {}">Add tag</button>
         </div>
         <table class="table table-hover">
             <thead>
@@ -51,11 +58,11 @@
                 <td>{{tag.id}}</td>
                 <td>{{tag.name}}</td>
                 <td>
-                    <div class="tag-color" style="background: #{{tag.color}};"></div>
+                    <div class="tag-color" style="background: {{tag.color}};"></div>
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-default" ng-click="editTag(tag)">Edit</button>
+                        <button class="btn btn-default" ng-click="$parent.tagToEdit = tag">Edit</button>
                         <button class="btn btn-default" ng-click="$parent.tagToRemove = tag">Remove</button>
                     </div>
                 </td>

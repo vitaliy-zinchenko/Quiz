@@ -9,10 +9,6 @@ import javax.persistence.*;
 @Table(name = "image")
 public class Image {
 
-    //    @Id
-    //    @Column(name = "image_id")
-    //    @GeneratedValue(generator = "image_gen", strategy = GenerationType.SEQUENCE)
-    //    @SequenceGenerator(name = "image_gen", sequenceName = "image_seq")
     @Id
     @Column(name = "image_id")
     @GeneratedValue(generator = "img_generator", strategy = GenerationType.SEQUENCE)

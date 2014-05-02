@@ -12,7 +12,8 @@ dir.directive('qModalWind', function () {
             okClick: '&',
             okLabel: '@',
             cancelClick: '&',
-            cancelLabel: '@'
+            cancelLabel: '@',
+            okShow: '='
         },
         link: function (scope, elm, attrs) {
             scope.$watch('isShow', function(){
@@ -121,7 +122,6 @@ dir.directive('qGlobalMessage', ['globalMessageService',
             templateUrl: '/app/js/common/directives/qGlobalMessage.html',
             scope: {},
             link: function (scope, elem, attrs) {
-                console.log("GM");
                 globalMessageService.setUpdateListener(function (messages) {
                     setTimeout(function(){
                         scope.$apply(function () {

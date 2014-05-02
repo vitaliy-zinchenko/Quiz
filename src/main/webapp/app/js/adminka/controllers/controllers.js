@@ -24,28 +24,15 @@ adminkaControllers.controller('AdminkaImagesCtrl',
                 delete image.old;
                 image.edit = false;
             }
-            //TODO | need refactoring
             $scope.save = function (image) {
                 $scope.saving = true;
-                $upload.upload({
-                    url: '/api/image',
-                    method: 'POST',
-                    data: image
-                }).progress(function (evt) {
-                        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-                    }).success(function (data) {
-                        console.log('s');
-                        console.log(data);
-                        angular.extend(image, data);
-                        image.edit = false;
-                        delete image.old;
-                        globalMessageService.addSuccess("Image saved successfully.")
-                        $scope.saving = false;
-                    }).error(function () {
-                        globalMessageService.addDanger("Error during saving.")
-                        $scope.saving = false;
-                    });
-
+                Image.save(image, function(){
+                    globalMessageService.addSuccess("Image saved successfully.");
+                    $scope.saving = false;
+                }, function(){
+                    globalMessageService.addDanger("Error during saving.");
+                    $scope.saving = false;
+                });
             }
             $scope.remove = function (image) {
                 $scope.deleting = true;
@@ -76,8 +63,9 @@ adminkaControllers.controller('AdminkaTagsCtrl', ['$scope', 'Tag', 'globalMessag
     function ($scope, Tag, globalMessages) {
         $scope.tags = Tag.getAll();
 
-        $scope.addTag = function(tag){
-            console.log($scope);
+        $scope.save = function(tag){
+            if(tag.id) Tag.update(tag);
+            else Tag.create(tag);
         }
 
         $scope.editTag = function(tag){
