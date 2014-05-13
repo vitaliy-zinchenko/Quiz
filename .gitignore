@@ -1,2 +1,4 @@
 .idea
 *.iml
+src/main/webapp/node_modules/
+src/main/webapp/app/bower_components/
