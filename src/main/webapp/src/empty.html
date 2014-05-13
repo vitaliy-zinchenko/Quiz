@@ -1,0 +1,6 @@
+<div class="alert alert-info"
+     ng-show="(parent.$resolved == true || object.$resolved == true ||
+                    (parent == undefined && object.$resolved == undefined))
+                            && object.length == 0">
+    {{message}}
+</div>

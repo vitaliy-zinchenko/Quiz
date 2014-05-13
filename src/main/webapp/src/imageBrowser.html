@@ -1,0 +1,11 @@
+<div class="image-browse-section">
+    <div class="images">
+        <h3>Images</h3>
+        <div empty object="images" message="There isn't any images."></div>
+        <div class="image-container" ng-repeat="image in images">
+            <div class="image">
+                <img src="{{config.environment.imagesPath}}/{{image.fileName}}">
+            </div>
+        </div>
+    </div>
+</div>
