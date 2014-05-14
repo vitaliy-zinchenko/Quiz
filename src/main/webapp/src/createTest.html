@@ -5,6 +5,23 @@
     <li class="active">Create test</li>
 </ol>
 
+<t-model-wind is-show="chooseImagesShow" title="Choose image">
+    <div image-browser images="images"></div>
+</t-model-wind>
+<!--<span ng-show="chooseImagesShow">ssss</span>-->
+<!--<button class="btn btn-default" ng-click="chooseImagesShow=true">Click</button>-->
+<!---->
+        <!--<span>{{vvvv}}</span>-->
+<!--<input ng-model="vvvv">-->
+
+
+
+
+
+<!--<t-model-wind is-show="chooseImagesShow" title="Choose image">-->
+    <!--<div image-browser images="images"></div>-->
+<!--</t-model-wind>-->
+
 <div class="test-section">
     <div class="test-form-section">
         <form name="form" novalidate>
@@ -36,6 +53,11 @@
                         <li class="list-group-item" ng-repeat="task in test.tasks">
                             <div class="task-image-section frame">
                                 <img src="{{config.environment.imagesPath}}/{{task.image.fileName}}">
+                                <!--<button class="btn btn-default" on-click="$parent.chooseImagesShow=true">Choose image</button>-->
+
+                                <!--<input ng-model="$parent.vvvv">-->
+                                <!--<span>{{$parent.vvvv}}</span>-->
+                                <!--<button ng-click="click(vvvv)">click</button>-->
                             </div>
                             <div class="task-form-section">
                                 <div class="form-group">
@@ -50,6 +72,9 @@
                                               class="form-control" id="answer" rows="3">
 
                                     </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default" ng-click="$parent.chooseImagesShow=true">Choose image</button>
                                 </div>
                             </div>
                         </li>

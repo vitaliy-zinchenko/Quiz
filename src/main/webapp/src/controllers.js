@@ -1,4 +1,4 @@
-var controllers = angular.module('controllers', ['ngRoute', 'service', 'directives']);
+var controllers = angular.module('controllers', ['ngRoute', 'service', 'directives', 'commonDirectives']);
 
 controllers.controller('ListCtrl', ['$scope', '$http', 'Category',
     function ($scope, $http, Category) {
