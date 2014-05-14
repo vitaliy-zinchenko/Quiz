@@ -8,9 +8,15 @@ module.exports = function(config){
             'app/bower_components/angular-route/angular-route.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/jquery/dist/jquery.js',
+            'app/bower_components/bootstrap/js/modal.js',
+//            'app/bower_components/jasmine/lib/jasmine-core/jasmine.js',
+//            'app/bower_components/jasmine/lib/jasmine-core/jasmine-html.js',
+//            'app/bower_components/jasmine/lib/jasmine-core/boot/boot.js',
 //            'app/bower_components/jasmine-jquery/lib/jasmine-jquery.js',
             'src/**/*.js',
             'test/unit/**/*.js',
+
+//            '',
             'src/**/*.html'
         ],
 

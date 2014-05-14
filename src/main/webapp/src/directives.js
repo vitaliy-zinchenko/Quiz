@@ -1,21 +1,5 @@
 var directives = angular.module('directives', []);
 
-//console.log('directives');
-
-directives.directive('loading', function(){
-    return {
-        templateUrl: '/src/loading.html',
-        scope:{
-            object: '=object',
-            customMessage: '@message'
-        },
-        link: function($scope, $element, $attrs, $transclude){
-            $scope.message = 'Loading...';
-            if($scope.customMessage) $scope.message = $scope.customMessage;
-        }
-    }
-});
-
 directives.directive('empty', function(){
     return {
         templateUrl: 'src/empty.html',

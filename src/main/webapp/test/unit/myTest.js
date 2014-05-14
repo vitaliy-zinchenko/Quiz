@@ -5,18 +5,6 @@ describe('empty', function () {
 
     beforeEach(module('src/empty.html'));
 
-    beforeEach(function () {
-        this.addMatchers({
-            toHaveClass: function (cls) {
-                this.message = function () {
-                    return "Expected '" + angular.mock.dump(this.actual) + "' to have class '" + cls + "'.";
-                };
-
-                return this.actual.hasClass(cls);
-            }
-        });
-    });
-
     beforeEach(inject(function ($compile, $rootScope) {
         scope = $rootScope;
         scope.object = [];
@@ -29,7 +17,6 @@ describe('empty', function () {
         elmWithParent = angular.element('<div empty parent="parent" object="object" message="mmm"></div>');
         $compile(elmWithParent)(scope);
         scope.$digest();
-//        console.log(elmWithParent);
     }));
 
     it('should hide alert when object is empty and not resolved yet', function () {
@@ -85,9 +72,6 @@ describe('directives', function () {
                 var scope = $rootScope;
                 var element = $compile('<div my-dir></div>')(scope);
                 scope.$digest();
-//                console.log(element.html());
-//                expect('myText').toEqual(element.text());
-
             }]);
         });
     });

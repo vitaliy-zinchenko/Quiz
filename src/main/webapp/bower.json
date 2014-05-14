@@ -8,6 +8,7 @@
         "angular-mocks": "~1.2.x",
         "html5-boilerplate": "~4.3.0",
         "jquery": "2.1.1",
+        "jasmine": "2.0.0",
         "jasmine-jquery": "2.0.x",
         "lvlDragDrop": "1.0.0",
         "bootstrap": "3.1.1"
