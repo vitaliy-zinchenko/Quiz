@@ -73,6 +73,28 @@ span.required {
     width: 400px;
     right: 0;
 }
+.task-form-section{
+    margin-right: 200px;
+}
+.task-image-section{
+    width: 180px;
+    float: right;
+    margin-top: 20px;
+}
+.task-image-section img{
+    width: 100%;
+}
+
+/*   Image Browser   */
+.image-browse-section:after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+.image-browse-section{
+    margin: 0 25px;
+}
+
 .image-browse-section .image-container{
     width: 100px;
     height: 100px;
@@ -94,18 +116,6 @@ span.required {
     max-height: 100%;
     display: block;
     margin: auto;
-}
-
-.task-form-section{
-    margin-right: 200px;
-}
-.task-image-section{
-    width: 180px;
-    float: right;
-    margin-top: 20px;
-}
-.task-image-section img{
-    width: 100%;
 }
 
 /*   Adminka   */

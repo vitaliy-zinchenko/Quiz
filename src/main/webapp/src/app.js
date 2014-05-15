@@ -60,18 +60,6 @@ myApp.run(function ($rootScope, Config) {
     console.log($rootScope.config);
 });
 
-myApp.directive('imageBrowser', function () {
-    return {
-        templateUrl: '/src/imageBrowser.html',
-        scope: {
-            images: '=images'
-        },
-        controller: function ($scope, $element, $attrs, $transclude, Config) {
-            $scope.config = Config.load();
-        }
-    }
-})
-
 myApp.directive('validFile', function () {
     return {
         require: 'ngModel',
