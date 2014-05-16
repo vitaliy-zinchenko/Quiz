@@ -5,8 +5,9 @@
     <li class="active">Create test</li>
 </ol>
 
-<t-modal-wind is-show="chooseImagesShow" title="Choose image">
-    <q-image-browser target="currentTask" images="images"></q-image-browser>
+        {{modalOkClick}}
+<t-modal-wind is-show="chooseImagesShow" title="Choose image" ok-click="modalOkClick()" cancel-click="modalCancelClick(); modalCancelled=true;">
+    <q-image-browser target="currentTask" images="images" rollback="modalCancelled"></q-image-browser>
 </t-modal-wind>
 
 <div class="test-section">

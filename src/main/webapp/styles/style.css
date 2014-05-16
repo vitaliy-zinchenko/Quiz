@@ -107,6 +107,9 @@ span.required {
     height: 100%;
     padding: 5px;
 }
+.image-browse-section .image.active{
+    border: 2px solid #428bca;
+}
 .image-browse-section .image:hover{
     border-color: #428bca;
 }

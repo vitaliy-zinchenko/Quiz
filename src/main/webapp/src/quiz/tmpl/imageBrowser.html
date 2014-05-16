@@ -2,8 +2,8 @@
     <div class="images">
         <div empty object="images" message="There isn't any images."></div>
         <div class="image-container" ng-repeat="image in images">
-            <div class="image" ng-click="chosen(image)">
-                <img src="{{config.environment.imagesPath}}/{{image.fileName}}">
+            <div class="image" ng-click="chosen(image)" ng-class="{active: image.id == activeImage}">
+                <img src="{{config.environment.imagesPath}}/{{image.fileName}}" ng-click="$parent.activeImage=image.id">
             </div>
         </div>
     </div>

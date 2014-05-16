@@ -20,11 +20,17 @@ myApp.directive('qImageBrowser', function () {
         scope: {
             images: '=',
             target: '=',
-            choosing: '='
+            rollback: '='
         },
         link: function(scope, element, attrs){
             scope.$watch('target', function(){
                 console.log(scope.target);
+                scope.oldImage = scope.image;
+            });
+            scope.$watch('rollback', function(){
+                if(!scope.rollback) return;
+                scope.image = scope.oldImage;
+                console.log(scope.rollback);
             });
             scope.chosen = function(image){
                 scope.target.image = image;

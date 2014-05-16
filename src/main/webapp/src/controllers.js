@@ -62,6 +62,12 @@ controllers.controller('CreateTestCtrl',
                 $scope.test.tasks = $scope.test.tasks || [];
                 $scope.test.tasks.push({});
             }
+            $scope.modalOkClick = function(){
+                console.log('OK');
+            }
+            $scope.modalCancelClick = function(){
+                console.log('cancel');
+            }
         }]);
 
 //TODO | need to write directive for image browse section
@@ -79,6 +85,12 @@ controllers.controller('UpdateTestCtrl',
             $scope.addTask = function () {
                 $scope.test.tasks = $scope.test.tasks || [];
                 $scope.test.tasks.push({});
+            }
+            $scope.modalOkClick = function(){
+                console.log('OK');
+            }
+            $scope.modalCancelClick = function(){
+                console.log('cancel');
             }
         }]);
 

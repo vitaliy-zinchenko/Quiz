@@ -8,9 +8,15 @@ dir.directive('tModalWind', function () {
         templateUrl: 'src/common/directives/tModelWind.html',
         scope: {
             isShow: '=',
-            title: '@'
+            title: '@',
+            okClick: '&',
+            okLabel: '@',
+            cancelClick: '&',
+            cancelLabel: '@'
         },
         link: function (scope, elm, attrs) {
+//            console.log('okClick: ')
+//            console.log(scope.okClick);
             scope.$watch('isShow', function(){
                 if(!scope.isShow) return;
                 $(elm).modal({
@@ -20,6 +26,7 @@ dir.directive('tModalWind', function () {
             $(elm).on('hidden.bs.modal', function (e) {
                 scope.$apply(function(){
                     scope.isShow = false;
+
                 });
             })
         }
