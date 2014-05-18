@@ -3,25 +3,39 @@ var controllers = angular.module('controllers', ['ngRoute', 'service', 'directiv
 controllers.controller('ListCtrl', ['$scope', '$http', 'Category',
     function ($scope, $http, Category) {
         $scope.categories = Category.query();
-
-        $scope.word = "nyWord";
+        $scope.removeCategory = function(category){
+            console.log('rC()');
+            console.log(category);
+        }
+        $scope.removeTest = function(test){
+            console.log('rT()');
+            console.log(test);
+        }
     }]);
 
 controllers.controller('CategoryCtrl',
     ['$scope', 'Category', '$routeParams',
         function ($scope, Category, $routeParams) {
             $scope.category = Category.get({id: $routeParams.categoryId});
+            $scope.removeCategory = function(category){
+                console.log('rC()');
+                console.log(category);
+            }
+            $scope.removeTest = function(test){
+                console.log('rT()');
+                console.log(test);
+            }
         }]);
 
 controllers.controller('TestCtrl',
-    ['$scope', '$routeParams', 'Test', 'taskService',
-        function ($scope, $routeParams, Test, taskService) {
+    ['$scope', '$routeParams', 'Test',
+        function ($scope, $routeParams, Test) {
             $scope.test = Test.get({id: $routeParams.testId});
         }]);
 
 controllers.controller('TaskCtrl',
-    ['$scope', 'taskService',
-        function ($scope, taskService) {
+    ['$scope',
+        function ($scope) {
             console.log('TaskCtrl');
             $scope.init = function (task) {
                 $scope.task = task;
@@ -70,7 +84,6 @@ controllers.controller('CreateTestCtrl',
             }
         }]);
 
-//TODO | need to write directive for image browse section
 controllers.controller('UpdateTestCtrl',
     ['$scope', '$location', 'Test', 'Image', 'Config', '$routeParams',
         function($scope, $location, Test, Image, Config, $routeParams){
@@ -91,6 +104,9 @@ controllers.controller('UpdateTestCtrl',
             }
             $scope.modalCancelClick = function(){
                 console.log('cancel');
+            }
+            $scope.removeTask = function(task){
+                $scope.test.tasks.splice($scope.test.tasks.indexOf(task), 1);
             }
         }]);
 

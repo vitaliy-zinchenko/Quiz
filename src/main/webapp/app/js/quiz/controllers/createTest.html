@@ -1,0 +1,108 @@
+<ol class="breadcrumb">
+    <li ng-show="test.category.name"><a href="#/category/{{test.category.id}}">Category "{{test.category.name}}"</a>
+    </li>
+    <li ng-hide="test.category.name"><a href="#/categories">Categories</a></li>
+    <li class="active">Create test</li>
+</ol>
+
+<q-image-browser target="currentTask" images="images"></q-image-browser>
+
+<div class="test-section">
+    <div class="test-form-section">
+        <form name="form" novalidate>
+            <button ng-click="save()" ng-disabled="form.$invalid"
+                    class="btn btn-success">
+                Save
+            </button>
+
+            <div class="form-group">
+                <label for="name">
+                    <span class="required">* </span>
+                    Title:
+                </label>
+                <input id="name" type="text" ng-model="test.name"
+                          class="form-control" name="name" rows="3" required/>
+            </div>
+            <div ng-show="form.name.$dirty && form.name.$invalid">
+                <div class="alert alert-danger" ng-show="form.name.$error.required">
+                    Title is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">
+                    <span class="required">* </span>
+                    Description:
+                </label>
+                <textarea id="description" type="text" ng-model="test.description"
+                          class="form-control" name="description" rows="3" required></textarea>
+            </div>
+            <div ng-show="form.description.$dirty && form.description.$invalid">
+                <div class="alert alert-danger" ng-show="form.description.$error.required">
+                    Description is required.
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tasks:
+                </div>
+                <div class="panel-body">
+                    <empty object="test.tasks" message="This test doesn't have any tasks."></empty>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="task in test.tasks" ng-form="taskForm">
+                            <div ng-show="taskForm.question.$dirty && taskForm.question.$invalid">
+                                <div class="alert alert-danger" ng-show="taskForm.question.$error.required">
+                                    Question is required.
+                                </div>
+                            </div>
+                            <div class="task-image-section" q-image-require ng-model="task.image">
+                                <q-empty object="task.image">Choose image.</q-empty>
+                                <div ng-show="task.image" class="frame">
+                                    <img src="{{config.environment.imagesPath}}/{{task.image.fileName}}">
+                                </div>
+                            </div>
+                            <div class="task-form-section">
+                                <div class="form-group">
+                                    <label for="question">
+                                        <span class="required">* </span>
+                                        Question:
+                                    </label>
+                                    <textarea type="text" ng-model="task.question" name="question"
+                                              class="form-control" id="question" rows="3" required>
+                                    </textarea>
+                                </div>
+                                <div ng-show="taskForm.question.$dirty && taskForm.question.$invalid">
+                                    <div class="alert alert-danger" ng-show="taskForm.question.$error.required">
+                                        Question is required.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="answer">
+                                        <span class="required">* </span>
+                                        Answer:
+                                    </label>
+                                    <textarea type="text" ng-model="task.answer" name="answer"
+                                              class="form-control" id="answer" rows="3" required></textarea>
+                                </div>
+                                <div ng-show="taskForm.answer.$dirty && taskForm.answer.$invalid">
+                                    <div class="alert alert-danger" ng-show="taskForm.answer.$error.required">
+                                        Answer is required.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default" ng-click="$parent.currentTask=task">Choose image</button>
+                                    <button class="btn btn-danger" ng-click="removeTask(task)">Delete</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" ng-click="addTask()">Add task</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div image-browser images="images"></div>
+</div>
+

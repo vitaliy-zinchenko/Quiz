@@ -1,0 +1,12 @@
+<q-modal-wind is-show="target" title="Choose image" ok-click="okClick()" cancel-click="cancelClick();">
+    <div class="image-browse-section">
+        <div class="images">
+            <div empty object="images" message="There isn't any images."></div>
+            <div class="image-container" ng-repeat="image in images">
+                <div class="image" ng-click="chosen(image)" ng-class="{active: image.id == chosenImage.id}">
+                    <img src="{{config.environment.imagesPath}}/{{image.fileName}}" ng-click="$parent.activeImage=image.id">
+                </div>
+            </div>
+        </div>
+    </div>
+</q-modal-wind>

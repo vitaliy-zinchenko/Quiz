@@ -2,7 +2,7 @@ describe('t-model-wind', function(){
     var elm, scope;
 
     beforeEach(module('commonDirectives'));
-    beforeEach(module('src/common/directives/tModelWind.html'));
+    beforeEach(module('src/common/directives/qModalWind.html'));
 
     beforeEach(inject(function($rootScope, $compile){
         scope = $rootScope;

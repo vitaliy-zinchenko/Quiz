@@ -1,52 +1,57 @@
-var myApp = angular.module('myApp', ['ngRoute',
+var app = angular.module('app', ['ngRoute',
     'controllers', 'adminkaControllers', 'service']);
 
-myApp.config(['$routeProvider',
+app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
+            /**
+             * ~~~~~ QUIZ ~~~~~
+             */
             .when('/list', {
-                templateUrl: 'src/list.html',
+                templateUrl: 'app/js/quiz/controllers/list.html',
                 controller: 'ListCtrl'
             })
             .when('/test/:testId', {
-                templateUrl: 'src/test.html',
+                templateUrl: 'app/js/quiz/controllers/test.html',
                 controller: 'TestCtrl'
             })
             .when('/category/:categoryId', {
-                templateUrl: 'src/list.html',
+                templateUrl: 'app/js/quiz/controllers/list.html',
                 controller: 'CategoryCtrl'
             })
             .when('/create/category', {
-                templateUrl: 'src/createCategory.html',
+                templateUrl: 'app/js/quiz/controllers/createCategory.html',
                 controller: 'CreateCategoryCtrl'
             })
             .when('/category/:categoryId/update', {
-                templateUrl: 'src/createCategory.html',
+                templateUrl: 'app/js/quiz/controllers/createCategory.html',
                 controller: 'CreateCategoryCtrl'
             })
             .when('/create/category/:categoryId', {
-                templateUrl: 'src/createCategory.html',
+                templateUrl: 'app/js/quiz/controllers/createCategory.html',
                 controller: 'CreateCategoryCtrl'
             })
             .when('/createTest/:categoryId', {
-                templateUrl: 'src/createTest.html',
+                templateUrl: 'app/js/quiz/controllers/createTest.html',
                 controller: 'CreateTestCtrl'
             })
             .when('/test/:testId/update', {
-                templateUrl: 'src/createTest.html',
+                templateUrl: 'app/js/quiz/controllers/createTest.html',
                 controller: 'UpdateTestCtrl'
             })
-            //TODO | need to separate adminka to it's directory
+        /**
+         * ~~~~~ ADMINKA ~~~~~
+         */
             .when('/adminka', {
-                templateUrl: '/src/adminka/main.html',
+                templateUrl: '/app/js/adminka/controllers/main.html',
                 controller: 'AdminkaMainCtrl'
             })
             .when('/adminka/images', {
-                templateUrl: '/src/adminka/images.html',
+                templateUrl: '/app/js/adminka/controllers/images.html',
                 controller: 'AdminkaImagesCtrl'
             })
             .when('/adminka/users', {
-                templateUrl: '/src/adminka/users.html',
+                templateUrl: '/app/js/adminka/controllers/users.html',
                 controller: 'AdminkaUsersCtrl'
             })
             .otherwise({
@@ -55,38 +60,11 @@ myApp.config(['$routeProvider',
 
     }]);
 
-myApp.run(function ($rootScope, Config) {
+app.run(function ($rootScope, Config) {
     $rootScope.config = Config.load();
-    console.log($rootScope.config);
 });
 
-myApp.directive('validFile', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, el, attrs, ngModel) {
-            el.bind('change', function () {
-                scope.$apply(function () {
-                    ngModel.$setViewValue(el.val());
-                    ngModel.$render();
-                });
-            });
-            el.bind('click', function () {
-                scope.$apply(function () {
-                    ngModel.$setViewValue();
-                    ngModel.$render();
-                });
-            });
-        }
-    }
-});
-
-myApp.service('globalMessageService', [function () {
-//    /**
-//     * @type {{key:{
-//     *     text: ' ',
-//     *     type: 'danger'
-//     * }}}
-//     */
+app.service('globalMessageService', [function () {
     var messages = [];
 
     /**
@@ -134,35 +112,3 @@ myApp.service('globalMessageService', [function () {
         }
     }
 }]);
-
-myApp.directive('globalMessage', ['globalMessageService',
-    function (globalMessageService) {
-        return {
-            templateUrl: '/src/globalMessage.html',
-            scope: {},
-            link: function (scope, elem, attrs) {
-                globalMessageService.setUpdateListener(function (messages) {
-                    setTimeout(function(){
-                        scope.$apply(function () {
-                            scope.messages = messages;
-                        });
-                    });
-                });
-                scope.close = function (message) {
-                    globalMessageService.removeMessage(message);
-                }
-            }
-        }
-    }]);
-
-myApp.service('taskService', function () {
-    var _tasks = [];
-
-    this.setTasks = function (tasks) {
-        _tasks = tasks;
-    };
-
-    this.getTasks = function () {
-        return _tasks;
-    }
-});

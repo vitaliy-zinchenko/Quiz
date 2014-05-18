@@ -2,7 +2,7 @@ var adminkaDirectives = angular.module('adminkaDirectives', ['service']);
 
 adminkaDirectives.directive('adminkaMenu', function(){
     return {
-        templateUrl: '/src/adminka/adminkaMenu.html',
+        templateUrl: 'app/js/adminka/directives/qAdminkaMenu.html',
         scope: {
             currentItemKey:'@currentItemKey'
         },

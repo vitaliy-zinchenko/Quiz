@@ -4,8 +4,10 @@
     "dependencies": {
         "angular": "1.2.x",
         "angular-route": "1.2.x",
+        "angular-resource": "1.2.x",
         "angular-loader": "1.2.x",
         "angular-mocks": "~1.2.x",
+        "ng-file-upload": "1.4.0",
         "html5-boilerplate": "~4.3.0",
         "jquery": "2.1.1",
         "jasmine": "2.0.0",

@@ -1,5 +1,5 @@
 var adminkaControllers = angular.module('adminkaControllers',
-    ['directives', 'adminkaDirectives', 'service', 'angularFileUpload']);
+    ['directives', 'adminkaDirectives', 'commonDirectives', 'service', 'angularFileUpload']);
 
 adminkaControllers.controller('AdminkaMainCtrl', ['$scope', 'Config',
     function ($scope, Config) {
@@ -24,6 +24,7 @@ adminkaControllers.controller('AdminkaImagesCtrl',
                 delete image.old;
                 image.edit = false;
             }
+            //TODO | need refactoring
             $scope.save = function (image) {
                 $scope.saving = true;
                 $upload.upload({

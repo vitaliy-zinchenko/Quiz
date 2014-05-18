@@ -1,0 +1,70 @@
+<ol class="breadcrumb">
+    <li class="active">Categories</li>
+</ol>
+<div class="panel-group">
+    <a href="#/create/category" ng-hide="category.id" class="btn btn-success btn-sm">Create Category</a>
+    <a href="#/create/category/{{category.id}}" ng-show="category.id" class="btn btn-success btn-sm">Create Category</a>
+    <a href="#/createTest/{{category.id}}" ng-show="category.id" class="btn btn-success btn-sm">Create Test</a>
+    <a href="#/adminka" class="btn btn-success btn-sm">To Adminka</a>
+</div>
+<div class="labels">
+    <q-modal-wind is-show="categoryToRemove" ok-click="removeCategory(categoryToRemove)" title="Are you sure?">
+        <p>
+            Are you sure you want ro remove category <b>{{categoryToRemove.name}}</b> with description
+            <i>{{categoryToRemove.description}}</i>?
+        </p>
+    </q-modal-wind>
+
+    <q-modal-wind is-show="testToRemove" ok-click="removeTest(testToRemove)" title="Are you sure?">
+        <p>
+            Are you sure you want ro remove test <b>{{testToRemove.name}}</b> with description
+            <i>{{testToRemove.description}}</i>?
+        </p>
+    </q-modal-wind>
+    <!--Case when come to firs page of categories-->
+    <q-loading object="categories"></q-loading>
+    <div class="label-container" ng-repeat="category in categories">
+        <div class="label-item label-category" ng-include="'categoryTemplate'"></div>
+    </div>
+
+    <!--Case when come to second page of categories-->
+    <q-loading object="category"></q-loading>
+    <div class="label-container" ng-repeat="category in category.categories">
+        <div class="label-item label-category" ng-include="'categoryTemplate'"></div>
+    </div>
+
+    <script id="categoryTemplate" type="text/ng-template">
+        <a href="#/category/{{category.id}}">
+            <div class="icon">
+
+            </div>
+            <h3>{{category.name}}</h3>
+
+            <p>{{category.description}}</p>
+        </a>
+        <div class="buttons">
+            <div class="btn-group btn-group-xs">
+                <a href="#/category/{{category.id}}/update" class="btn btn-default">Edit</a>
+                <button class="btn btn-danger" ng-click="$parent.$parent.categoryToRemove = category">Remove</button>
+            </div>
+        </div>
+    </script>
+
+    <div class="label-container" ng-repeat="test in category.tests">
+        <div class="label-item label-test">
+            <a href="#/test/{{test.id}}">
+                <div class="icon">
+
+                </div>
+                <h3>{{test.name}}</h3>
+
+                <p>{{test.description}}</p>
+            </a>
+
+            <div class="buttons btn-group btn-group-xs">
+                <a href="#/test/{{test.id}}/update" class="btn btn-default">Edit</a>
+                <button class="btn btn-danger" ng-click="$parent.testToRemove = test">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
