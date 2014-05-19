@@ -69,7 +69,8 @@ app.config(['$routeProvider',
     }]);
 
 app.run(function ($rootScope, Config) {
-    $rootScope.config = Config.load();
+    //TODO !!!!!!!!!!!!!!!!!!
+//    $rootScope.config = Config.load();
 });
 
 app.service('globalMessageService', [function () {

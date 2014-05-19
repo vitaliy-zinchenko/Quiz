@@ -30,7 +30,8 @@ angular.module('service', ['ngResource'])
         var Config = $resource('/api/config/clientSide');
         //TODO | need to do synchronosly and cash
         Config.load = function () {
-            return Config.get();
+            //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//            return Config.get();
         };
         Config.getAdminkaMenuItems = function () {
             return [

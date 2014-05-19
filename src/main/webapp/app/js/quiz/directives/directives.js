@@ -3,7 +3,7 @@ var dir = angular.module('directives', ['service']);
 dir.directive('qImageBrowser', ['Image', function (Image) {
     return {
         restrict: 'E',
-        templateUrl: '/app/js/quiz/directives/qImageBrowser.html',
+        templateUrl: 'app/js/quiz/directives/qImageBrowser.html',
         scope: {
             target: '='
         },
@@ -19,6 +19,7 @@ dir.directive('qImageBrowser', ['Image', function (Image) {
                 delete scope.chosenImage;
             };
             scope.images = Image.query();
+            console.log(scope.images);
         },
         controller: function ($scope, $element, $attrs, Config) {
             $scope.config = Config.load();
