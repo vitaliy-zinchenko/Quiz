@@ -2,14 +2,14 @@ describe('t-model-wind', function(){
     var elm, scope;
 
     beforeEach(module('commonDirectives'));
-    beforeEach(module('src/common/directives/qModalWind.html'));
+    beforeEach(module('app/js/common/directives/qModalWind.html'));
 
     beforeEach(inject(function($rootScope, $compile){
         scope = $rootScope;
-        elm = angular.element('<t-modal-wind title="Modal wind title" is-show="isShow"' +
+        elm = angular.element('<q-modal-wind title="Modal wind title" is-show="isShow"' +
                                     'ok-click="okClick()" cancel-click="cancelClick()">' +
                                 '<div>modal wind content</div>' +
-                              '</t-modal-wind>');
+                              '</q-modal-wind>');
         $compile(elm)(scope);
         scope.$digest();
     }));
@@ -44,9 +44,10 @@ describe('t-model-wind', function(){
     });
 
     it('should print custom labels for buttons', inject(function($compile){
-        elm = angular.element('<t-modal-wind is-show="isShow" ok-label="Custom OK" cancel-label="Custom Cancel">' +
-            '<div>modal wind content</div>' +
-            '</t-modal-wind>');
+        elm = angular.element(
+            '<q-modal-wind is-show="isShow" ok-label="Custom OK" cancel-label="Custom Cancel">' +
+                '<div>modal wind content</div>' +
+            '</q-modal-wind>');
         $compile(elm)(scope);
         scope.$digest();
 

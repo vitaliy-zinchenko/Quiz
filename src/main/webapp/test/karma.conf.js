@@ -9,9 +9,9 @@ module.exports = function(config){
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/jquery/dist/jquery.js',
             'app/bower_components/bootstrap/js/modal.js',
-            'src/**/*.js',
+            'app/js/**/*.js',
             'test/unit/**/*.js',
-            'src/**/*.html'
+            'app/js/**/*.html'
         ],
 
         autoWatch : true,
@@ -34,7 +34,7 @@ module.exports = function(config){
         },
 
         preprocessors: {
-            'src/**/*.html': 'ng-html2js'
+            'app/js/**/*.html': 'ng-html2js'
         }
 
     });

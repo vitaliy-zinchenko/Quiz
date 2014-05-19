@@ -39,9 +39,8 @@ span.required {
     border-color: rgba(244, 248, 118, 0.59);
 }
 
-.label-item .icon {
-    background: #428bca;
-    height: 130px
+.label-item .icon img {
+    width: 100%;
 }
 
 .tags:after {
@@ -58,26 +57,33 @@ span.required {
     cursor: pointer;
 }
 
+/*  Category create/update */
+.category-form-section .details-section{
+    margin-right: 300px;
+}
+.category-form-section .image-section{
+    width: 270px;
+    float: right;
+}
+.category-form-section .image-section img{
+    width: 100%;
+}
 /*  Test create/update  */
-.test-section {
-    position: relative;
-}
-
 .test-section .test-form-section {
-    position: absolute;
-    width: 580px;
+    margin-right: 300px;
 }
-
-.test-section .image-browse-section {
-    position: absolute;
-    width: 400px;
-    right: 0;
+.test-section .image-section {
+    width: 270px;
+    float: right;
+}
+.test-section .image-section img{
+    width: 100%;
 }
 .task-form-section{
-    margin-right: 200px;
+    margin-right: 300px;
 }
 .task-image-section{
-    width: 180px;
+    width: 270px;
     float: right;
     margin-top: 20px;
 }

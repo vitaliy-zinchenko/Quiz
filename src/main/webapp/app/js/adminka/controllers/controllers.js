@@ -70,4 +70,9 @@ adminkaControllers.controller('AdminkaImagesCtrl',
 adminkaControllers.controller('AdminkaUsersCtrl', ['$scope',
     function ($scope) {
 
+    }]);
+
+adminkaControllers.controller('AdminkaTagsCtrl', ['$scope',
+    function ($scope) {
+
     }])

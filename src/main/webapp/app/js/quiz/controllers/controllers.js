@@ -59,8 +59,8 @@ controllers.controller('CreateTestCtrl',
             $scope.category = Category.get({id: $routeParams.categoryId});
             $scope.test = $scope.test || {};
             $scope.test.category = $scope.test.category || {};
-            $scope.images = Image.query();
-            $scope.config = Config.load();
+//            $scope.images = Image.query();
+//            $scope.config = Config.load();
 //            $scope.test.category.id = $scope.test.category.id || $scope.category.id;
             $scope.save = function () {
                 $scope.test.category.id = $scope.test.category.id || $scope.category.id;
@@ -88,8 +88,8 @@ controllers.controller('UpdateTestCtrl',
     ['$scope', '$location', 'Test', 'Image', 'Config', '$routeParams',
         function($scope, $location, Test, Image, Config, $routeParams){
             $scope.test = Test.get({id: $routeParams.testId});
-            $scope.images = Image.query();
-            $scope.config = Config.load();
+//            $scope.images = Image.query();
+//            $scope.config = Config.load();
             $scope.save = function () {
                 $scope.test.$update({}, function(test){
                     $location.path('/test/'+test.id);

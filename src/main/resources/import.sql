@@ -34,30 +34,30 @@ insert into image (image_id, name, description, file_name) values (55, 'image na
 insert into image (image_id, name, description, file_name) values (56, 'image name 56', 'ima ge description 56', 'image7.jpg');
 insert into image (image_id, name, description, file_name) values (57, 'image name 57', 'ima ge description 57', 'image8.jpg');
 
-insert into category (category_id, name, description, parent_category_id) values (11, 'name_1_1', 'description_1_1 descri descrip', null);
-insert into category (category_id, name, description, parent_category_id) values (12, 'name_1_2', 'description_1_2 descript cription', null);
-insert into category (category_id, name, description, parent_category_id) values (13, 'name_1_3', 'description_1_3', null);
-insert into category (category_id, name, description, parent_category_id) values (14, 'name_1_4', 'description_1_4', null);
-insert into category (category_id, name, description, parent_category_id) values (15, 'name_1_5', 'description_1_5 desc rip tion', null);
-insert into category (category_id, name, description, parent_category_id) values (16, 'name_1_6', 'description_1_6 de sc ript ion', null);
-insert into category (category_id, name, description, parent_category_id) values (17, 'name_1_7', 'description_1_7 des cri pti on descrin', null);
-insert into category (category_id, name, description, parent_category_id) values (18, 'name_1_8', 'description_1_8 des crip tion', null);
-insert into category (category_id, name, description, parent_category_id) values (19, 'name_1_9', 'description_1_9 desc ript', null);
-insert into category (category_id, name, description, parent_category_id) values (20, 'name_1_10', 'description_1_10', null);
+insert into category (category_id, name, description, parent_category_id, image_id) values (11, 'name_1_1', 'description_1_1 descri descrip', null, 50);
+insert into category (category_id, name, description, parent_category_id, image_id) values (12, 'name_1_2', 'description_1_2 descript cription', null, 51);
+insert into category (category_id, name, description, parent_category_id, image_id) values (13, 'name_1_3', 'description_1_3', null, 52);
+insert into category (category_id, name, description, parent_category_id, image_id) values (14, 'name_1_4', 'description_1_4', null, 53);
+insert into category (category_id, name, description, parent_category_id, image_id) values (15, 'name_1_5', 'description_1_5 desc rip tion', null, 54);
+insert into category (category_id, name, description, parent_category_id, image_id) values (16, 'name_1_6', 'description_1_6 de sc ript ion', null, 55);
+insert into category (category_id, name, description, parent_category_id, image_id) values (17, 'name_1_7', 'description_1_7 des cri pti on descrin', null, 56);
+insert into category (category_id, name, description, parent_category_id, image_id) values (18, 'name_1_8', 'description_1_8 des crip tion', null, 57);
+insert into category (category_id, name, description, parent_category_id, image_id) values (19, 'name_1_9', 'description_1_9 desc ript', null, 50);
+insert into category (category_id, name, description, parent_category_id, image_id) values (20, 'name_1_10', 'description_1_10', null, 51);
 
-insert into category (category_id, name, description, parent_category_id) values (21, 'name_2_1', 'description_2_1', 11);
-insert into category (category_id, name, description, parent_category_id) values (22, 'name_2_2', 'description_2_2', 11);
-insert into category (category_id, name, description, parent_category_id) values (23, 'name_2_3', 'description_2_3', 11);
-insert into category (category_id, name, description, parent_category_id) values (24, 'name_2_4', 'description_2_4', 12);
-insert into category (category_id, name, description, parent_category_id) values (25, 'name_2_1', 'description_2_1', 12);
-insert into category (category_id, name, description, parent_category_id) values (26, 'name_2_1', 'description_2_1', 13);
+insert into category (category_id, name, description, parent_category_id, image_id) values (21, 'name_2_1', 'description_2_1', 11, 52);
+insert into category (category_id, name, description, parent_category_id, image_id) values (22, 'name_2_2', 'description_2_2', 11, 53);
+insert into category (category_id, name, description, parent_category_id, image_id) values (23, 'name_2_3', 'description_2_3', 11, 54);
+insert into category (category_id, name, description, parent_category_id, image_id) values (24, 'name_2_4', 'description_2_4', 12, 55);
+insert into category (category_id, name, description, parent_category_id, image_id) values (25, 'name_2_1', 'description_2_1', 12, 56);
+insert into category (category_id, name, description, parent_category_id, image_id) values (26, 'name_2_1', 'description_2_1', 13, 57);
 
 insert into category (category_id, name, description, parent_category_id) values (31, 'name_3_1', 'description_3_1', 21);
 
-insert into test (test_id, name, description, category_id) values (100, 'name_100', 'description_100', 11);
-insert into test (test_id, name, description, category_id) values (101, 'name_101', 'description_101', 11);
-insert into test (test_id, name, description, category_id) values (102, 'name_102', 'description_102', 11);
-insert into test (test_id, name, description, category_id) values (103, 'name_103', 'description_103', 11);
+insert into test (test_id, name, description, category_id, image_id) values (100, 'name_100', 'description_100', 11, 50);
+insert into test (test_id, name, description, category_id, image_id) values (101, 'name_101', 'description_101', 11, 51);
+insert into test (test_id, name, description, category_id, image_id) values (102, 'name_102', 'description_102', 11, 52);
+insert into test (test_id, name, description, category_id, image_id) values (103, 'name_103', 'description_103', 11, 53);
 
 -- insert into task (task_id, question, answer, test_id, image_id) values (500, 'question_500', 'answer_500', 100, 50);
 -- insert into task (task_id, question, answer, test_id, image_id) values (501, 'question_501', 'answer_501', 100, 51);

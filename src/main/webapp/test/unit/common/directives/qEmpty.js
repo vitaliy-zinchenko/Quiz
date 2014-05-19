@@ -3,7 +3,7 @@ describe('q-empty', function () {
 
     beforeEach(module('commonDirectives'));
 
-    beforeEach(module('src/common/directives/qEmpty.html'));
+    beforeEach(module('app/js/common/directives/qEmpty.html'));
 
     beforeEach(inject(function ($compile, $rootScope) {
         scope = $rootScope;
@@ -58,19 +58,22 @@ describe('q-empty', function () {
 
         expect(elm.eq(0)).not.toHaveClass('ng-hide');
     });
-    it('should hide alert when object is empty and parent not resolved yet', function () {
+    it('should hide alert when object is undefined and parent not resolved yet', function () {
         scope.$apply(function(){
             scope.parent.$resolved = false;
+            scope.object = undefined;
         });
 
         expect(elmWithParent.eq(0)).toHaveClass('ng-hide');
     });
-    it('should show alert when object is empty and parent already resolved', function () {
+    it('should show alert when object is undefined and parent already resolved', function () {
         scope.$apply(function(){
             scope.parent.$resolved = true;
+            scope.object = undefined;
         });
 
         expect(elmWithParent.eq(0)).not.toHaveClass('ng-hide');
     });
+
 
 });

@@ -42,6 +42,10 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Test> tests;
 
+    @JoinColumn(name = "image_id")
+    @ManyToOne
+    private Image image;
+
     public List<Category> getCategories() {
         return categories;
     }
@@ -88,5 +92,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

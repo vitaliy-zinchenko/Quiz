@@ -1,0 +1,7 @@
+<div class="tags">
+    <q-loading object="tags"></q-loading>
+    <q-empty object="tags">You don't have tags.</q-empty>
+    <div class="tag" ng-click="addTag(tag)" style="background-color: #{{tag.color}};" ng-repeat="tag in tags">
+        {{tag.name}}
+    </div>
+</div>

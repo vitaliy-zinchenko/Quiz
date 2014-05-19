@@ -4,51 +4,54 @@
     <li ng-show="category.id" class="active">Edit category '{{category.name}}'</li>
 </ol>
 
-<form name="form" novalidate>
+<q-image-browser target="categoryToSelectImage" images="images"></q-image-browser>
 
-    <div class="form-group">
-        <label for="name">
-            <span class="required">* </span>
-            Name:
-        </label>
-        <input type="text" ng-model="category.name" name="name"
-               class="form-control" id="name" required>
+<form class="category-form-section" name="form" novalidate>
+    <div class="panel-group">
+        <button ng-click="save()" class="btn btn-success" ng-disabled="form.$invalid">Save</button>
+        <button class="btn btn-default" ng-click="categoryToSelectImage = category">Choose image</button>
     </div>
-    <div ng-show="form.name.$dirty && form.name.$invalid">
-        <div class="alert alert-danger" ng-show="form.name.$error.required">
-            Name is required.
+
+    <div class="image-section">
+        <q-empty object="category.image" parent="category">Category doesn't have image.</q-empty>
+        <div class="frame" ng-show="category.image">
+            <img src="{{config.environment.imagesPath}}/{{category.image.fileName}}">
         </div>
     </div>
-    <div class="form-group">
-        <label for="description">
-            <span class="required">* </span>
-            Description:
-        </label>
-        <input type="text" ng-model="category.description"
-               class="form-control" id="description" name="description" required>
-    </div>
-    <div ng-show="form.description.$dirty && form.description.$invalid">
-        <div class="alert alert-danger" ng-show="form.description.$error.required">
-            Description is required.
+    <div class="details-section">
+        <div class="form-group">
+            <label for="name">
+                <span class="required">* </span>
+                Name:
+            </label>
+            <input type="text" ng-model="category.name" name="name"
+                   class="form-control" id="name" required>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="description">Tags: </label>
-        <div class="tags">
-            <div class="tag"  ng-click="removeTag(tag)" style="background-color: #{{tag.color}};" ng-repeat="tag in category.tags">
-                {{tag.name}}
+        <div ng-show="form.name.$dirty && form.name.$invalid">
+            <div class="alert alert-danger" ng-show="form.name.$error.required">
+                Name is required.
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="description">Available tags: </label>
-        <div class="tags">
-            <div class="tag" ng-click="addTag(tag)"
-                 style="background-color: #{{tag.color}};" ng-repeat="tag in tags">
-                {{tag.name}}
+        <div class="form-group">
+            <label for="description">
+                <span class="required">* </span>
+                Description:
+            </label>
+            <input type="text" ng-model="category.description"
+                   class="form-control" id="description" name="description" required>
+        </div>
+        <div ng-show="form.description.$dirty && form.description.$invalid">
+            <div class="alert alert-danger" ng-show="form.description.$error.required">
+                Description is required.
             </div>
         </div>
-        <div ng-show="tags.length == 0" class="alert alert-warning">You don't have tags.</div>
+        <div class="form-group">
+            <label for="description">Tags: </label>
+            <q-chosen-tags-browser></q-chosen-tags-browser>
+        </div>
+        <div class="form-group">
+            <label for="description">Available tags: </label>
+            <q-tags-browser></q-tags-browser>
+        </div>
     </div>
-    <button ng-click="save()" class="btn btn-success" ng-disabled="form.$invalid">Save</button>
 </form>

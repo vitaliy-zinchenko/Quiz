@@ -12,7 +12,7 @@
     <script src="/app/js/adminka/controllers/controllers.js"></script>
     <script src="/app/js/adminka/directives/directives.js"></script>
     <script src="/app/js/quiz/controllers/controllers.js"></script>
-    <script src="/app/js/quiz/services.js"></script>
+    <script src="/app/js/quiz/service.js"></script>
     <script src="/app/js/quiz/directives/directives.js"></script>
     <script src="/app/js/common/directives/directives.js"></script>
 

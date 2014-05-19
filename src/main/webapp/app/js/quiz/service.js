@@ -54,6 +54,13 @@ angular.module('service', ['ngResource'])
                     description: 'You can edit, add, remove users there.',
                     url: '/adminka/users',
                     icon: 'users.jpg'
+                },
+                {
+                    key: 'tags',
+                    name: 'Tags',
+                    description: 'You can edit, add, remove tags there.',
+                    url: '/adminka/tags',
+                    icon: 'tags.jpg'
                 }
             ]
         }

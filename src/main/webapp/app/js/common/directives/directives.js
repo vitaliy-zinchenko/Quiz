@@ -57,14 +57,33 @@ dir.directive('qEmpty', function(){
         },
         link: function($scope, $element, $attrs){
             $scope.isShow = function(){
-//                (parent.$resolved == true || object.$resolved == true ||
-//                    (parent == undefined && object.$resolved == undefined) || object == undefined)
-//                && (object.length == 0 || object == undefined)
+                function isObjectResolved(){
+                    return $scope.object && $scope.object.$resolved;
+                }
 
-                //TODO | NEED REFACTORING !!!!!
-                return (($scope.parent && $scope.parent.$resolved == true) || ($scope.object && $scope.object.$resolved == true) ||
-                    ($scope.parent == undefined && ($scope.object && $scope.object.$resolved == undefined)) || $scope.object == undefined)
-                && (($scope.object && $scope.object.length == 0) || $scope.object == undefined);
+                function isParentResolved(){
+                    return $scope.parent && $scope.parent.$resolved;
+                }
+
+                function objectIsEmpty(){
+                    return $scope.object && $scope.object.length == 0;
+                }
+
+                function whenObjectEmptyAndNotResolved(){
+                    return isObjectResolved() && objectIsEmpty();
+                }
+
+                function whenObjectUndefinedAndParentResolved(){
+                    return isParentResolved() && !$scope.object;
+                }
+
+                function whenObjectIsUndefined(){
+                    return !$scope.parent && !$scope.object;
+                }
+
+                return whenObjectEmptyAndNotResolved() ||
+                    whenObjectUndefinedAndParentResolved() ||
+                    whenObjectIsUndefined();
             }
         }
     }

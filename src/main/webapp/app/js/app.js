@@ -54,6 +54,14 @@ app.config(['$routeProvider',
                 templateUrl: '/app/js/adminka/controllers/users.html',
                 controller: 'AdminkaUsersCtrl'
             })
+            .when('/adminka/tags', {
+                templateUrl: '/app/js/adminka/controllers/tags.html',
+                controller: 'AdminkaTagsCtrl'
+            })
+
+        /**
+         *  OTHER
+         */
             .otherwise({
                 redirectTo: '/list'
             });

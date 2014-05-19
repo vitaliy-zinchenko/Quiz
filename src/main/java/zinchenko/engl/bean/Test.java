@@ -43,6 +43,10 @@ public class Test {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name="image_id")
+    private Image image;
+
     public Long getId() {
         return id;
     }
@@ -81,5 +85,13 @@ public class Test {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

@@ -36,7 +36,7 @@
     <script id="categoryTemplate" type="text/ng-template">
         <a href="#/category/{{category.id}}">
             <div class="icon">
-
+                <img src="{{config.environment.imagesPath}}/{{category.image.fileName}}">
             </div>
             <h3>{{category.name}}</h3>
 
@@ -54,7 +54,7 @@
         <div class="label-item label-test">
             <a href="#/test/{{test.id}}">
                 <div class="icon">
-
+                    <img src="{{config.environment.imagesPath}}/{{test.image.fileName}}">
                 </div>
                 <h3>{{test.name}}</h3>
 
