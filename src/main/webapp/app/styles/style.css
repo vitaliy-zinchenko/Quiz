@@ -156,6 +156,15 @@ span.required {
     clear: both;
 }
 
+/*    Adminka Tags    */
+.tags-section .tag-color{
+    height: 15px;
+    margin: 3px;
+    border-radius: 5px;
+}
+.tags-section table td{
+    width: 25%;
+}
 
 /*   Global messages   */
 .global-messages{

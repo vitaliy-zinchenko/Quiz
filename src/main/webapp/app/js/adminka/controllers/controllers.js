@@ -52,10 +52,10 @@ adminkaControllers.controller('AdminkaImagesCtrl',
                 $scope.images.splice($scope.images.indexOf(image), 1);
                 console.log($scope.images.length);
                 Image.delete({id: image.id}, {},
-                    function(data, headers){
+                    function (data, headers) {
                         $scope.deleting = false;
                     },
-                    function(response){
+                    function (response) {
                         $scope.deleting = false;
                         //TODO
                         console.log('ERROR');
@@ -72,7 +72,19 @@ adminkaControllers.controller('AdminkaUsersCtrl', ['$scope',
 
     }]);
 
-adminkaControllers.controller('AdminkaTagsCtrl', ['$scope',
-    function ($scope) {
+adminkaControllers.controller('AdminkaTagsCtrl', ['$scope', 'Tag',
+    function ($scope, Tag) {
+        $scope.tags = Tag.query();
 
-    }])
+        $scope.addTag = function(){
+
+        }
+
+        $scope.editTag = function(){
+
+        }
+
+        $scope.removeTag = function(){
+
+        }
+    }]);
