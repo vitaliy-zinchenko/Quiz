@@ -58,11 +58,11 @@ dir.directive('qEmpty', function(){
         link: function($scope, $element, $attrs){
             $scope.isShow = function(){
                 function isObjectResolved(){
-                    return $scope.object && $scope.object.$resolved;
+                    return $scope.object && $scope.object.$resolved == true;
                 }
 
                 function isParentResolved(){
-                    return $scope.parent && $scope.parent.$resolved;
+                    return $scope.parent && $scope.parent.$resolved == true;
                 }
 
                 function objectIsEmpty(){
@@ -81,9 +81,14 @@ dir.directive('qEmpty', function(){
                     return !$scope.parent && !$scope.object;
                 }
 
+                function whenObjectIsEmpty(){
+                    return $scope.object && $scope.object.$resolved == undefined && $scope.object.length == 0;
+                }
+
                 return whenObjectEmptyAndNotResolved() ||
                     whenObjectUndefinedAndParentResolved() ||
-                    whenObjectIsUndefined();
+                    whenObjectIsUndefined() ||
+                    whenObjectIsEmpty();
             }
         }
     }

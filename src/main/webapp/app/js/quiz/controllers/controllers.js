@@ -1,5 +1,6 @@
 var controllers = angular.module('controllers', ['ngRoute', 'service', 'directives', 'commonDirectives']);
 
+//TODO | ned make one controller from ListCtrl and CategoryCtrl
 controllers.controller('ListCtrl', ['$scope', '$http', 'Category',
     function ($scope, $http, Category) {
         $scope.categories = Category.query();

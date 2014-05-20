@@ -1,4 +1,4 @@
-var dir = angular.module('directives', ['service']);
+var dir = angular.module('directives', ['service', 'commonDirectives']);
 
 dir.directive('qImageBrowser', ['Image', function (Image) {
     return {
@@ -69,7 +69,11 @@ app.directive('qTagsBrowser', ['Tag', function(Tag){
         },
         link: function(scope, elm, attrs){
             scope.tags = Tag.query();
-            console.log('qTagsBrowser');
+
+            scope.addTagToTarget = function(tag){
+                if(!scope.target.tags) scope.target.tags = [];
+                if(scope.target.tags.indexOf(tag) == -1) scope.target.tags.push(tag);
+            }
         }
     }
 }]);
@@ -82,7 +86,9 @@ app.directive('qChosenTagsBrowser', function(){
             target: '='
         },
         link: function(scope, elm, attrs){
-            console.log('qChosenTagsBrowser');
+            scope.removeTagFromTarget = function(tag){
+                scope.target.tags.splice(scope.target.tags.indexOf(tag), 1);
+            };
         }
     }
 });

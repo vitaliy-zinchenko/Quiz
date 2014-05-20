@@ -70,7 +70,7 @@ app.config(['$routeProvider',
 
 app.run(function ($rootScope, Config) {
     //TODO !!!!!!!!!!!!!!!!!!
-//    $rootScope.config = Config.load();
+    $rootScope.config = Config.load();
 });
 
 app.service('globalMessageService', [function () {

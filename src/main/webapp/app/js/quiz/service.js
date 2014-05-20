@@ -31,7 +31,7 @@ angular.module('service', ['ngResource'])
         //TODO | need to do synchronosly and cash
         Config.load = function () {
             //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//            return Config.get();
+            return Config.get();
         };
         Config.getAdminkaMenuItems = function () {
             return [

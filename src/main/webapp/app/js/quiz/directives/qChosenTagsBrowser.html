@@ -1,6 +1,7 @@
 <div class="tags">
-    <div class="tag" ng-click="removeTag(tag)" style="background-color: #{{tag.color}};"
-         ng-repeat="tag in category.tags">
+    <q-empty object="target.tags">You didn't choose any tag.</q-empty>
+    <div class="tag" ng-click="removeTagFromTarget(tag)" style="background-color: #{{tag.color}};"
+         ng-repeat="tag in target.tags">
         {{tag.name}}
     </div>
 </div>

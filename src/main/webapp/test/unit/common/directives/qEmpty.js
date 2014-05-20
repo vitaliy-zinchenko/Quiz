@@ -75,5 +75,12 @@ describe('q-empty', function () {
         expect(elmWithParent.eq(0)).not.toHaveClass('ng-hide');
     });
 
+    it('should show alert when object is empty', function () {
+        scope.$apply(function(){
+            scope.object = [];
+        });
+
+        expect(elmWithParent.eq(0)).not.toHaveClass('ng-hide');
+    });
 
 });
