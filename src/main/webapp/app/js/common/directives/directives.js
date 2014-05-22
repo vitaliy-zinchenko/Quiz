@@ -113,3 +113,25 @@ dir.directive('qValidFile', function () {
         }
     }
 });
+
+dir.directive('qGlobalMessage', ['globalMessageService',
+    function (globalMessageService) {
+        return {
+            restrict: 'E',
+            templateUrl: '/app/js/common/directives/qGlobalMessage.html',
+            scope: {},
+            link: function (scope, elem, attrs) {
+                console.log("GM");
+                globalMessageService.setUpdateListener(function (messages) {
+                    setTimeout(function(){
+                        scope.$apply(function () {
+                            scope.messages = messages;
+                        });
+                    });
+                });
+                scope.close = function (message) {
+                    globalMessageService.removeMessage(message);
+                }
+            }
+        }
+    }]);

@@ -1,10 +1,9 @@
 package zinchenko.engl.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import zinchenko.engl.bean.Tag;
 import zinchenko.engl.dao.TagDao;
 
@@ -24,6 +23,20 @@ public class TagController {
         return tagDao.findAll();
     }
 
+    @Transactional
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void remove(@PathVariable("id") Long id){
+        Tag tag = new Tag();
+        tag.setId(id);
+        tagDao.remove(tag);
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST)
+    public void save(@RequestBody Tag tag){
+        tagDao.remove(tag);
+    }
 
     public TagDao getTagDao() {
         return tagDao;

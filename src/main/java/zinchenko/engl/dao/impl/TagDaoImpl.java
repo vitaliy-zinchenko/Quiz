@@ -27,6 +27,11 @@ public class TagDaoImpl implements TagDao{
                 .save(tag);
     }
 
+    @Override
+    public void remove(Tag tag) {
+        sessionFactory.getCurrentSession().delete(tag);
+    }
+
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }

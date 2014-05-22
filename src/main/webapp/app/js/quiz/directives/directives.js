@@ -27,27 +27,6 @@ dir.directive('qImageBrowser', ['Image', function (Image) {
     }
 }]);
 
-
-dir.directive('qGlobalMessage', ['globalMessageService',
-    function (globalMessageService) {
-        return {
-            templateUrl: '/app/js/quiz/directives/qGlobalMessage.html',
-            scope: {},
-            link: function (scope, elem, attrs) {
-                globalMessageService.setUpdateListener(function (messages) {
-                    setTimeout(function(){
-                        scope.$apply(function () {
-                            scope.messages = messages;
-                        });
-                    });
-                });
-                scope.close = function (message) {
-                    globalMessageService.removeMessage(message);
-                }
-            }
-        }
-    }]);
-
 app.directive('qImageRequire', function () {
     return {
         require: 'ngModel',

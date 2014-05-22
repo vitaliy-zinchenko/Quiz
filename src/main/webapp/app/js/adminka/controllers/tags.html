@@ -1,3 +1,5 @@
+<q-global-message></q-global-message>
+
 <ol class="breadcrumb">
     <li><a href="#/adminka">Adminka</a></li>
     <li class="active">Tags</li>
@@ -6,8 +8,34 @@
 <div class="adminka-menu" adminka-menu current-item-key="tags"></div>
 <div class="adminka-content">
     <div class="tags-section">
+        <q-modal-wind is-show="tagToRemove" title="Are you sure?" ok-click="removeTag(tagToRemove)">
+            Are you sure you want to remove tag <b>{{tagToRemove.name}}?</b>
+        </q-modal-wind>
+        <input ng-model="mmm">
+        <q-modal-wind is-show="isAddTag" ok-click="addTag($parent.tag)">
+            -{{mmm}}-
+            <input>
+            <button ng-click="addTag(tag)">bbb</button>
+            <form name="form">
+                <div class="form-group">
+                    <label for="name">
+                        <span class="required">* </span>
+                        Name:
+                    </label>
+                    <input id="name" type="text" ng-model="$parent.tag.name"
+                           class="form-control" name="name" rows="3" required/>
+                </div>
+                <input ng-model="myVal"> |{{myVal}}|
+                <!--<div ng-show="form.name.$dirty && form.name.$invalid">-->
+                    <!--<div class="alert alert-danger" ng-show="form.name.$error.required">-->
+                        <!--Name is required.-->
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </q-modal-wind>
+        {{myVal}}
         <div class="panel-group">
-            <button class="btn btn-success" ng-click="addTag()">Add tag</button>
+            <button class="btn btn-success" ng-click="isAddTag = true">Add tag</button>
         </div>
         <table class="table table-hover">
             <thead>
@@ -28,7 +56,7 @@
                 <td>
                     <div class="btn-group btn-group-sm">
                         <button class="btn btn-default" ng-click="editTag(tag)">Edit</button>
-                        <button class="btn btn-default" ng-click="removeTag(tag)">Remove</button>
+                        <button class="btn btn-default" ng-click="$parent.tagToRemove = tag">Remove</button>
                     </div>
                 </td>
             </tr>

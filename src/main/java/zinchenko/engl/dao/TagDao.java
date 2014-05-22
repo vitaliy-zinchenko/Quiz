@@ -11,4 +11,6 @@ public interface TagDao {
 
     Long create(Tag tag);
 
+    void remove(Tag tag);
+
 }

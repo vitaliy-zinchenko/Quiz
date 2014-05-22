@@ -72,19 +72,21 @@ adminkaControllers.controller('AdminkaUsersCtrl', ['$scope',
 
     }]);
 
-adminkaControllers.controller('AdminkaTagsCtrl', ['$scope', 'Tag',
-    function ($scope, Tag) {
-        $scope.tags = Tag.query();
+adminkaControllers.controller('AdminkaTagsCtrl', ['$scope', 'Tag', 'globalMessageService',
+    function ($scope, Tag, globalMessages) {
+        $scope.tags = Tag.getAll();
 
-        $scope.addTag = function(){
-
+        $scope.addTag = function(tag){
+            console.log($scope);
         }
 
-        $scope.editTag = function(){
-
+        $scope.editTag = function(tag){
+            console.log($scope);
         }
 
-        $scope.removeTag = function(){
-
+        $scope.removeTag = function(tag){
+            Tag.delete(tag, function(){
+                globalMessages.addSuccess("The tag '"+tag.name+"' has been remover.")
+            });
         }
     }]);

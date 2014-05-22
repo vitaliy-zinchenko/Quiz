@@ -13,10 +13,31 @@ angular.module('service', ['ngResource'])
         return Test;
     })
     .factory('Tag', function ($resource) {
-        var tag = $resource('/api/tag/:id');
+        var Tag = $resource('/api/tag/:id', {}, {
+            _delete: {method: 'DELETE'},
+            _save: {method: 'POST'}
+        });
 
+        var tags;
 
-        return tag;
+        Tag.getAll = function(){
+            if(tags) return tags;
+            tags = Tag.query();
+            return tags;
+        }
+
+        Tag.delete = function(tag, success, error){
+            Tag._delete({id: tag.id}, function(){
+                tags.splice(tags.indexOf(tag), 1);
+                if(success) success();
+            }, error);
+        }
+
+        Tag.save = function(save){
+            Tag._save();
+        }
+
+        return Tag;
     })
     .factory('Image', function ($resource) {
         var Image = $resource('/api/image/:id', {}, {

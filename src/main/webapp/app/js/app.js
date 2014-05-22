@@ -75,10 +75,6 @@ app.run(function ($rootScope, Config) {
 
 app.service('globalMessageService', [function () {
     var messages = [];
-
-    /**
-     * @type function(messages)
-     */
     var updateListener;
     return {
         setUpdateListener: function (listener) {
