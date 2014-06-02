@@ -119,7 +119,7 @@ dir.directive('qGlobalMessage', ['globalMessageService',
     function (globalMessageService) {
         return {
             restrict: 'E',
-            templateUrl: '/app/js/common/directives/qGlobalMessage.html',
+            templateUrl: 'app/js/common/directives/qGlobalMessage.html',
             scope: {},
             link: function (scope, elem, attrs) {
                 globalMessageService.setUpdateListener(function (messages) {

@@ -42,19 +42,19 @@ app.config(['$routeProvider', function ($routeProvider) {
      * ~~~~~ ADMINKA ~~~~~
      */
         .when('/adminka', {
-            templateUrl: '/app/js/adminka/controllers/main.html',
+            templateUrl: 'app/js/adminka/controllers/main.html',
             controller: 'AdminkaMainCtrl'
         })
         .when('/adminka/images', {
-            templateUrl: '/app/js/adminka/controllers/images.html',
+            templateUrl: 'app/js/adminka/controllers/images.html',
             controller: 'AdminkaImagesCtrl'
         })
         .when('/adminka/users', {
-            templateUrl: '/app/js/adminka/controllers/users.html',
+            templateUrl: 'app/js/adminka/controllers/users.html',
             controller: 'AdminkaUsersCtrl'
         })
         .when('/adminka/tags', {
-            templateUrl: '/app/js/adminka/controllers/tags.html',
+            templateUrl: 'app/js/adminka/controllers/tags.html',
             controller: 'AdminkaTagsCtrl'
         })
 
