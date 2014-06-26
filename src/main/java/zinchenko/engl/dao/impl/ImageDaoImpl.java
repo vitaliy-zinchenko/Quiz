@@ -23,7 +23,7 @@ public class ImageDaoImpl implements ImageDao{
 
     @Transactional
     public void save(Image image){
-        sessionFactory.getCurrentSession().saveOrUpdate(image);
+        sessionFactory.getCurrentSession().save(image);
     }
 
     @Override
@@ -31,6 +31,11 @@ public class ImageDaoImpl implements ImageDao{
         Image image = new Image();
         image.setId(id);
         sessionFactory.getCurrentSession().delete(image);
+    }
+
+    @Override
+    public Image find(Long id) {
+        return (Image) sessionFactory.getCurrentSession().load(Image.class, id);
     }
 
     public SessionFactory getSessionFactory() {

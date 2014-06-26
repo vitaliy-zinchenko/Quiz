@@ -37,6 +37,13 @@ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springfr
 
     </bean>
 
-
+    <bean class="zinchenko.engl.controllers.config.FileConfig">
+        <property name="entities">
+            <map>
+                <entry key="images" value="\\images"/>
+            </map>
+        </property>
+        <property name="filePath" value="D:\\files"/>
+    </bean>
 
 </beans>

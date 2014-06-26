@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.AbstractMultipartHttpServletRequest;
 import zinchenko.engl.bean.Image;
+import zinchenko.engl.controllers.config.FileConfig;
 import zinchenko.engl.dao.ImageDao;
 
 import javax.servlet.ServletContext;
@@ -16,18 +16,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/image")
 public class ImageController {
 
+    public static final String IMAGES_ENTITY_NAME = "images";
     @Autowired
     private ImageDao imageDao;
 
     @Value("#{main['main.fileStore']}")
     private String imageStorePath;
+
+    @Autowired
+    private FileConfig fileConfig;
 
     @Autowired
     private ServletContext servletContext;
@@ -40,16 +43,14 @@ public class ImageController {
         return imageDao.findAll();
     }
 
-//    @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     Image save(HttpServletRequest request, MultipartFile file, Image image) throws IOException {
         String fileName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
-        File f = new File(servletContext.getRealPath("")+imageStorePath + File.separator + fileName);
-        FileUtils.openOutputStream(f).write(file.getBytes());
-//
         image.setFileName(fileName);
         imageDao.save(image);
+        File f = new File(fileConfig.getFilePath() + fileConfig.getEntityPath(IMAGES_ENTITY_NAME) + File.separator + fileName);
+        FileUtils.openOutputStream(f).write(file.getBytes());
         return image;
     }
 
@@ -57,7 +58,10 @@ public class ImageController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void delete(@PathVariable("id") Long id){
+        Image image = imageDao.find(id);
         imageDao.delete(id);
+        File f = new File(fileConfig.getFilePath() + fileConfig.getEntityPath(IMAGES_ENTITY_NAME) + File.separator + image.getFileName());
+        f.delete();
     }
 
     public ImageDao getImageDao() {
@@ -82,5 +86,13 @@ public class ImageController {
 
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
+    }
+
+    public FileConfig getFileConfig() {
+        return fileConfig;
+    }
+
+    public void setFileConfig(FileConfig fileConfig) {
+        this.fileConfig = fileConfig;
     }
 }

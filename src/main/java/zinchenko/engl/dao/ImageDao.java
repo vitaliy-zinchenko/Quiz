@@ -12,4 +12,6 @@ public interface ImageDao {
 
     void delete(Long id);
 
+    Image find(Long id);
+
 }
