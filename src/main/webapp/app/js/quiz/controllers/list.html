@@ -6,6 +6,7 @@
     <a href="#/create/category/{{category.id}}" ng-show="category.id" class="btn btn-success btn-sm">Create Category</a>
     <a href="#/createTest/{{category.id}}" ng-show="category.id" class="btn btn-success btn-sm">Create Test</a>
     <a href="#/adminka" class="btn btn-success btn-sm">To Adminka</a>
+    <a class="btn btn-success btn-sm" ng-click="logout()">logout</a>
 </div>
 <div class="labels">
     <q-modal-wind is-show="categoryToRemove" ok-click="removeCategory(categoryToRemove)" title="Are you sure?">

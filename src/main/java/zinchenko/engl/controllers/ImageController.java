@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import zinchenko.engl.bean.Image;
 import zinchenko.engl.controllers.config.FileConfig;
+import zinchenko.engl.domain.Image;
 import zinchenko.engl.dao.ImageDao;
 
 import javax.servlet.ServletContext;

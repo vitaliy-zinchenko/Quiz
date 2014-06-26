@@ -50,6 +50,18 @@ angular.module('service', ['ngResource', 'angularFileUpload'])
 
         return Tag;
     })
+    .factory('Login', function($resource){
+        var Login = $resource('api/security/login', {}, {
+            login: {method: 'POST'}
+        });
+        return Login;
+    })
+    .factory('Logout', ['$resource', function($resource) {
+        var Logout = $resource('api/security/logout', {}, {
+            logout: {method: 'GET'}
+        });
+        return Logout;
+    }])
     .factory('Image', ['$resource', '$upload', function ($resource, $upload) {
         var Image = $resource('api/image/:id', {}, {
             delete: {method: 'DELETE', params: {id: 'id'}}

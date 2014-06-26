@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import zinchenko.engl.bean.Category;
-import zinchenko.engl.bean.Test;
+import zinchenko.engl.domain.Category;
 import zinchenko.engl.dao.CategoryDao;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

@@ -6,6 +6,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     /**
      * ~~~~~ QUIZ ~~~~~
      */
+        .when('/login', {
+            templateUrl: 'app/js/quiz/controllers/login.html',
+            controller: 'LoginCtrl'
+        })
         .when('/list', {
             templateUrl: 'app/js/quiz/controllers/list.html',
             controller: 'ListCtrl'
@@ -67,10 +71,14 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.run(function ($rootScope, Config) {
+app.run(['$rootScope', 'Config', 'Logout', function ($rootScope, Config, Logout) {
     //TODO !!!!!!!!!!!!!!!!!!
     $rootScope.config = Config.load();
-});
+    $rootScope.logout = function(){
+        Logout.logout();
+        console.log('logout');
+    }
+}]);
 
 app.service('globalMessageService', [function () {
     var messages = [];

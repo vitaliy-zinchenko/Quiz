@@ -4,7 +4,7 @@ package zinchenko;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
-import zinchenko.engl.bean.Category;
+import zinchenko.engl.domain.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class JsonTest {
 
     @Test
     public void testTest() throws JsonProcessingException {
-        zinchenko.engl.bean.Test test = new zinchenko.engl.bean.Test();
+        zinchenko.engl.domain.Test test = new zinchenko.engl.domain.Test();
         test.setId(12L);
         test.setName("t_name_12");
         Category category = new Category();

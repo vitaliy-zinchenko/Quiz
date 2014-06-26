@@ -1,6 +1,6 @@
 package zinchenko.engl.dao;
 
-import zinchenko.engl.bean.Category;
+import zinchenko.engl.domain.Category;
 
 import java.util.List;
 

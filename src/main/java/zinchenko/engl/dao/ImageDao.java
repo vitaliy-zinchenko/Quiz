@@ -1,6 +1,6 @@
 package zinchenko.engl.dao;
 
-import zinchenko.engl.bean.Image;
+import zinchenko.engl.domain.Image;
 
 import java.util.List;
 

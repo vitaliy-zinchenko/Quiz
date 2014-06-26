@@ -1,7 +1,4 @@
-package zinchenko.engl.bean;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+package zinchenko.engl.domain;
 
 import javax.persistence.*;
 

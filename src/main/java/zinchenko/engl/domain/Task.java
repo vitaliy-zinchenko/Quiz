@@ -1,4 +1,4 @@
-package zinchenko.engl.bean;
+package zinchenko.engl.domain;
 
 //import org.codehaus.jackson.annotate.JsonBackReference;
 //import org.codehaus.jackson.annotate.JsonManagedReference;

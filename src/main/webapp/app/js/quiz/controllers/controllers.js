@@ -70,6 +70,11 @@ controllers.controller('CreateTestCtrl',
                     console.log(test);
                     console.log('test saved');
                     $location.path('/test/'+test.id);
+                }, function(response){
+                    if(response.status == 401) {
+                        console.log("401 !!!");
+                        $location.path("/login");
+                    }
                 });
             }
             $scope.addTask = function () {
@@ -138,5 +143,18 @@ controllers.controller('CreateCategoryCtrl',
             $scope.save = function(image){
                 console.log($scope.category);
                 console.log(image);
+            }
+        }]);
+
+controllers.controller('LoginCtrl',
+    ['$scope', 'Login', '$location',
+        function ($scope, Login, $location) {
+            $scope.loginForm = {};
+            $scope.login = function () {
+                Login.login($scope.loginForm, function () {
+                    $location.path('/');
+                }, function (response) {
+                    //TODO
+                });
             }
         }]);

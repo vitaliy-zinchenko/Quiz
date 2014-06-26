@@ -1,4 +1,4 @@
-package zinchenko.engl.bean;
+package zinchenko.engl.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

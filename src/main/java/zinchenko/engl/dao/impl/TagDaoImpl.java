@@ -3,10 +3,9 @@ package zinchenko.engl.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import zinchenko.engl.bean.Tag;
+import zinchenko.engl.domain.Tag;
 import zinchenko.engl.dao.TagDao;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Repository

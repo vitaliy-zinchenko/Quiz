@@ -1,6 +1,4 @@
-package zinchenko.engl.bean;
-
-import org.hibernate.annotations.GenericGenerator;
+package zinchenko.engl.domain;
 
 import javax.persistence.*;
 

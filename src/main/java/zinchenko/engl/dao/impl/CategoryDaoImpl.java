@@ -3,7 +3,7 @@ package zinchenko.engl.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import zinchenko.engl.bean.Category;
+import zinchenko.engl.domain.Category;
 import zinchenko.engl.dao.CategoryDao;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package zinchenko.engl.dao;
 
-import zinchenko.engl.bean.Test;
+import zinchenko.engl.domain.Test;
 
 public interface TestDao {
 

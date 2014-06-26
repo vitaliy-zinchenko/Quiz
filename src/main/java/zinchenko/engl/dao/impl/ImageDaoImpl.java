@@ -3,7 +3,7 @@ package zinchenko.engl.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import zinchenko.engl.bean.Image;
+import zinchenko.engl.domain.Image;
 import zinchenko.engl.dao.ImageDao;
 
 import javax.transaction.Transactional;

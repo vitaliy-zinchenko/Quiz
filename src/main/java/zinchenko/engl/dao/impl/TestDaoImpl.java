@@ -1,10 +1,9 @@
 package zinchenko.engl.dao.impl;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import zinchenko.engl.bean.Test;
+import zinchenko.engl.domain.Test;
 import zinchenko.engl.dao.TestDao;
 
 @Repository

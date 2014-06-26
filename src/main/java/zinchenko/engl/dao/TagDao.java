@@ -1,8 +1,7 @@
 package zinchenko.engl.dao;
 
-import zinchenko.engl.bean.Tag;
+import zinchenko.engl.domain.Tag;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface TagDao {
