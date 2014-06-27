@@ -1,10 +1,13 @@
 package zinchenko.engl.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
+
+    public static final String LOGIN = "login";
 
     @Id
     @Column(name = "user_id")
@@ -21,6 +24,19 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    public User() {
+    }
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    @Transient
+    public void cleanPassword(){
+        password = null;
+    }
 
     public Long getId() {
         return id;
