@@ -8,15 +8,18 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 //import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table(name = "test")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Test {
 
     @Id
@@ -25,9 +28,13 @@ public class Test {
     @SequenceGenerator(name = "test_seq", sequenceName = "test_seq")
     private Long id;
 
+    @NotEmpty
+    @Length(max = 50)
     @Column(name = "name")
     private String name;
 
+    @NotEmpty
+    @Length(max = 400)
     @Column(name = "description")
     private String description;
 
@@ -36,14 +43,15 @@ public class Test {
     @Cascade(CascadeType.SAVE_UPDATE)
     private List<Task> tasks;
 
-//    @JsonProperty
+    //    @JsonProperty
 //    @JsonBackReference("category-test")
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name="image_id")
+    @JoinColumn(name = "image_id")
     private Image image;
 
     public Long getId() {

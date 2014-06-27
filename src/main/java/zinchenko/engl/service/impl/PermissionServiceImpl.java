@@ -2,6 +2,7 @@ package zinchenko.engl.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import zinchenko.engl.dao.PermissionDao;
 import zinchenko.engl.service.PermissionService;
 
@@ -18,6 +19,7 @@ public class PermissionServiceImpl implements PermissionService {
     private PermissionDao permissionDao;
 
     @Override
+    @Transactional
     public List<String> findPermissionsByLogin(String login) {
         return permissionDao.findPermissionsByLogin(login);
     }

@@ -7,6 +7,7 @@ import zinchenko.engl.domain.Test;
 import zinchenko.engl.dao.TestDao;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/test")
@@ -25,7 +26,7 @@ public class TestController {
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    Test save(@RequestBody Test test){
+    Test save(@RequestBody @Valid Test test){
         return testDao.save(test);
     }
 

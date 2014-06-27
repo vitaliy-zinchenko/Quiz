@@ -12,6 +12,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.JdbcUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import zinchenko.engl.domain.User;
+import zinchenko.engl.service.PermissionService;
 import zinchenko.engl.service.RoleService;
 import zinchenko.engl.service.SecurityService;
 import zinchenko.engl.service.UserService;
@@ -19,6 +20,8 @@ import zinchenko.engl.service.UserService;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,6 +38,9 @@ public class QuizRealm extends AuthorizingRealm {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private PermissionService permissionService;
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = (String) token.getPrincipal();
@@ -50,20 +56,18 @@ public class QuizRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-
         //null usernames are invalid
         if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
 
-        String username = (String) getAvailablePrincipal(principals);
+        String login = (String) getAvailablePrincipal(principals);
 
-        Set<String> roleNames = roleService.findRolesByUsername(username);
+        List<String> roleNames = roleService.findRolesByUsername(login);
 
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);
-        info.addStringPermission("teacher");
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(new LinkedHashSet<>(roleNames));
+        info.addStringPermissions(permissionService.findPermissionsByLogin(login));
         return info;
-
     }
 
     public SecurityService getSecurityService() {
@@ -88,5 +92,13 @@ public class QuizRealm extends AuthorizingRealm {
 
     public void setRoleService(RoleService roleService) {
         this.roleService = roleService;
+    }
+
+    public PermissionService getPermissionService() {
+        return permissionService;
+    }
+
+    public void setPermissionService(PermissionService permissionService) {
+        this.permissionService = permissionService;
     }
 }

@@ -15,7 +15,7 @@ public class User implements Serializable {
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 

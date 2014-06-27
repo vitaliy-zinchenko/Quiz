@@ -1,4 +1,4 @@
-package zinchenko.engl.domain;
+package zinchenko.engl.bean;
 
 import java.util.Properties;
 

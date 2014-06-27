@@ -1,12 +1,12 @@
 package zinchenko.engl.service;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by zinchenko on 27.06.14.
  */
 public interface RoleService {
 
-    Set<String> findRolesByUsername(String login);
+    List<String> findRolesByUsername(String login);
 
 }

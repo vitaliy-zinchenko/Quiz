@@ -1,5 +1,5 @@
-insert into permission(id, permission) values (151, 'teacher');
-insert into permission(id, permission) values (152, 'student');
+insert into permission(permission_id, permission) values (151, 'teacher');
+insert into permission(permission_id, permission) values (152, 'student');
 
 insert into role (role_id, name) values (1, 'teacher');
 insert into role (role_id, name) values (2, 'student');

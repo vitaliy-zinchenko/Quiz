@@ -2,10 +2,12 @@ package zinchenko.engl.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import zinchenko.engl.dao.RoleDao;
 import zinchenko.engl.service.RoleService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,11 +20,9 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     @Override
-    public Set<String> findRolesByUsername(String login) {
+    @Transactional
+    public List<String> findRolesByUsername(String login) {
         return roleDao.findRolesByUsername(login);
-//        Set<String> roles = new HashSet<>();
-//        roles.add("teacher");
-//        return roles;
     }
 
     public RoleDao getRoleDao() {

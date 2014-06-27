@@ -1,12 +1,12 @@
 package zinchenko.engl.dao;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by zinchenko on 27.06.14.
  */
 public interface RoleDao {
 
-    Set<String> findRolesByUsername(String username);
+    List<String> findRolesByUsername(String username);
 
 }

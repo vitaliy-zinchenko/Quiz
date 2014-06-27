@@ -20,7 +20,7 @@ public class PermissionDaoImpl implements PermissionDao {
 
     public List<String> findPermissionsByLogin(String login) {
         return (List<String>) sessionFactory.getCurrentSession()
-                .createQuery("select p.permission from Permission p where p.role.user.login = :login")
+                .createQuery("select p.permission from User u join u.role as r join r.permissions as p where u.login = :login")
                 .setString(User.LOGIN, login).list();
     }
 
