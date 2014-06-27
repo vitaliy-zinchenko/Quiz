@@ -1,5 +1,11 @@
+insert into permission(id, permission) values (151, 'teacher');
+insert into permission(id, permission) values (152, 'student');
+
 insert into role (role_id, name) values (1, 'teacher');
 insert into role (role_id, name) values (2, 'student');
+
+insert into role_permission(role_id, permission_id) values (1, 151);
+insert into role_permission(role_id, permission_id) values (2, 152);
 
 insert into user (user_id, role_id, login, password) values (200, 1, 'teacher_login', '1234');
 insert into user (user_id, role_id, login, password) values (201, 2, 'student_login', '1234');

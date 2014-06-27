@@ -1,6 +1,7 @@
 package zinchenko.engl.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="role")
@@ -14,6 +15,13 @@ public class Role {
 
     @Column(name="name")
     private String name;
+
+    @ManyToMany()
+    @JoinTable(name = "role_permission",
+        joinColumns = {@JoinColumn(name = "role_id")},
+        inverseJoinColumns = {@JoinColumn(name = "permission_id")}
+    )
+    private Set<Permission> permissions;
 
     public String getName() {
         return name;
@@ -29,5 +37,13 @@ public class Role {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions = permissions;
     }
 }

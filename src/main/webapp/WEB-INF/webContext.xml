@@ -11,6 +11,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springfr
     <!--<import resource="classpath*:zinchenko/security-appConfig.xml"/>-->
 
     <context:component-scan base-package="zinchenko.engl.controllers"/>
+    <context:component-scan base-package="zinchenko.engl.controllers.advice"/>
     <context:component-scan base-package="zinchenko.engl.service"/>
     <context:component-scan base-package="zinchenko.engl.dao"/>
 
@@ -60,7 +61,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springfr
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /api/test** = rest[admit:create]
+                /api/test** = rest[teacher:create]
                 /** = anon
             </value>
         </property>
