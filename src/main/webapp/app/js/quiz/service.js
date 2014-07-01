@@ -58,8 +58,11 @@ angular.module('service', ['ngResource', 'angularFileUpload'])
     })
     .factory('Logout', ['$resource', function($resource) {
         var Logout = $resource('api/security/logout', {}, {
-            logout: {method: 'GET'}
+            _logout: {method: 'GET'}
         });
+        Logout.logout = function(success){
+            Logout._logout({}, success);
+        };
         return Logout;
     }])
     .factory('Image', ['$resource', '$upload', function ($resource, $upload) {
@@ -87,10 +90,19 @@ angular.module('service', ['ngResource', 'angularFileUpload'])
     }])
     .factory('Config', function ($resource) {
         var Config = $resource('api/config/clientSide');
+
+        var config = {};
         //TODO | need to do synchronosly and cash
         Config.load = function () {
             //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            return Config.get();
+            config = Config.get();
+            return config;
+        };
+        Config.setUser = function(user){
+            config.user = user;
+        };
+        Config.cleanUser = function(){
+            delete config.user;
         };
         Config.getAdminkaMenuItems = function () {
             return [

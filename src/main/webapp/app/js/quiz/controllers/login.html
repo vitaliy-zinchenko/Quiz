@@ -6,6 +6,9 @@
                required autofocus ng-model="loginForm.username" name="username">
         <input type="password" class="form-control" placeholder="Password"
                required ng-model="loginForm.password" name="password">
+        <div class="alert alert-danger" ng-show="loginError">
+            Username or password is wrong. Ary again.
+        </div>
         <!--<label class="checkbox">-->
             <!--<input type="checkbox" value="remember-me"> Remember me-->
         <!--</label>-->

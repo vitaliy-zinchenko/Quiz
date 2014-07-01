@@ -71,14 +71,36 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.run(['$rootScope', 'Config', 'Logout', function ($rootScope, Config, Logout) {
-    //TODO !!!!!!!!!!!!!!!!!!
-    $rootScope.config = Config.load();
-    $rootScope.logout = function(){
-        Logout.logout();
-        console.log('logout');
-    }
-}]);
+app.run(['$rootScope', 'Config', 'Logout', '$location',
+    function ($rootScope, Config, Logout, $location) {
+        //TODO !!!!!!!!!!!!!!!!!!
+        $rootScope.config = Config.load();
+
+        //TODO | remove
+        globalConfig = $rootScope.config;
+
+        $rootScope.logout = function(){
+            Logout.logout(function(){
+                Config.cleanUser();
+                console.log('logout');
+            });
+        };
+        //TODO | refactor to directive
+        $rootScope.hasPermiss = function(permission){
+            if(!this.config.user)
+                return false;
+            var permissions = this.config.user.role.permissions;
+            for (var i = 0; i < permissions.length; i++) {
+                if(permissions[i].permission == permission)
+                    return true;
+            }
+            return false;
+        };
+        $rootScope.isAuth = function(){
+            if(this.config.user) return true;
+            else return false;
+        }
+    }]);
 
 app.service('globalMessageService', [function () {
     var messages = [];

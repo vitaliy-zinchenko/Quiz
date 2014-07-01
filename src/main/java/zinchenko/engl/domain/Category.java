@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 //import org.codehaus.jackson.annotate.JsonBackReference;
 //import org.codehaus.jackson.annotate.JsonIgnore;
 //import org.codehaus.jackson.annotate.JsonManagedReference;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "category")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Category {
 
@@ -24,11 +27,13 @@ public class Category {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "parentCategory", fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private List<Category> categories;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "parent_category_id")
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private Category parentCategory;
 
     @Column(name = "name")
@@ -40,10 +45,12 @@ public class Category {
 //    @JsonIgnore
 //    @JsonManagedReference("category-test")
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private List<Test> tests;
 
     @JoinColumn(name = "image_id")
     @ManyToOne
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private Image image;
 
     public List<Category> getCategories() {

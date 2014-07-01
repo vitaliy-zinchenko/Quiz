@@ -7,6 +7,7 @@ import zinchenko.engl.domain.User;
  */
 public interface SecurityService {
 
-    User find(String username);
+    String getCurrentLogin();
+
 
 }

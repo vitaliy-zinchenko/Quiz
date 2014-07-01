@@ -104,6 +104,24 @@
         </dependency>
 
 
+        <!--cache-->
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-wm</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-hibernate4</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
 
         <!-- persistence -->
 

@@ -1,5 +1,6 @@
 package zinchenko.engl.service.impl;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import zinchenko.engl.domain.User;
 import zinchenko.engl.service.SecurityService;
@@ -11,7 +12,8 @@ import zinchenko.engl.service.SecurityService;
 public class SecurityServiceImpl implements SecurityService {
 
     @Override
-    public User find(String username) {
-        return new User("un", "password");
+    public String getCurrentLogin() {
+        return String.valueOf(SecurityUtils.getSubject().getPrincipal());
     }
+
 }

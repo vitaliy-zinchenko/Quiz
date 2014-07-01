@@ -147,11 +147,17 @@ controllers.controller('CreateCategoryCtrl',
         }]);
 
 controllers.controller('LoginCtrl',
-    ['$scope', 'Login', '$location',
-        function ($scope, Login, $location) {
+    ['$scope', 'Login', '$location', 'Config',
+        function ($scope, Login, $location, Config) {
             $scope.loginForm = {};
             $scope.login = function () {
-                Login.login($scope.loginForm, function () {
+                Login.login($scope.loginForm, function (response) {
+                    if(response.error && response.error == 'unknown_acount') {
+                        $scope.loginError = true;
+                        return;
+                    }
+                    $scope.loginError = false;
+                    Config.setUser(response);
                     $location.path('/');
                 }, function (response) {
                     //TODO
